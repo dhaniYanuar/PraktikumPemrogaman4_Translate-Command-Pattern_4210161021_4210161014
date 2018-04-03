@@ -1,0 +1,40 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = Broker.o BuyStock.o CommandPattern.o SellStock.o Stock.o
+LINKOBJ  = Broker.o BuyStock.o CommandPattern.o SellStock.o Stock.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Translate.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Broker.o: Broker.cpp
+	$(CPP) -c Broker.cpp -o Broker.o $(CXXFLAGS)
+
+BuyStock.o: BuyStock.cpp
+	$(CPP) -c BuyStock.cpp -o BuyStock.o $(CXXFLAGS)
+
+CommandPattern.o: CommandPattern.cpp
+	$(CPP) -c CommandPattern.cpp -o CommandPattern.o $(CXXFLAGS)
+
+SellStock.o: SellStock.cpp
+	$(CPP) -c SellStock.cpp -o SellStock.o $(CXXFLAGS)
+
+Stock.o: Stock.cpp
+	$(CPP) -c Stock.cpp -o Stock.o $(CXXFLAGS)
